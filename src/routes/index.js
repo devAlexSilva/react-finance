@@ -1,12 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
 import { Dashboard } from "../pages/dashboard"
-
+import { AuthContext } from "../contexts/auth";
 
 const Private = ({ Item }) => {
-    const isLogged = false
+    const context = useContext(AuthContext)
+    const { isLogged } = context
 
     return isLogged? <Item /> : <Login /> 
 }
