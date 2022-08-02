@@ -1,17 +1,20 @@
-import { createContext, useState } from "react";
-import nookies from "nookies";
+import { createContext, useEffect, useState } from "react";
+import { setCookie, parseCookies, destroyCookie } from "nookies";
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLogged, setIsLogged] = useState(false)
 
-  const logout = nookies.destroy(null, "user");
-  const cookie = nookies.get()
-
+  useEffect(() => {
+    const userToken = parseCookies()
+    setUser(userToken.user)
+  }, [])
+  
+  const cancelToken = () => destroyCookie(null, 'user')
+  
   return (
-    <AuthContext.Provider value={{ setUser, logout, isLogged, setIsLogged, cookie }}>
+    <AuthContext.Provider value={{ user, cancelToken }}>
       {children}
     </AuthContext.Provider>
   );

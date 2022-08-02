@@ -1,25 +1,28 @@
-import React, { useContext, useRef } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { setCookie } from "nookies";
 import { api } from "../../api/axios";
+import { Navigate } from "react-router-dom"
 
 export const Login = () => {
-  const context = useContext(AuthContext);
   const email = useRef();
   const password = useRef();
+  const [canRedirect, setCanRedirect] = useState(false)
 
-  const login = async (refEmail, refPassword) => {
+  const login = useCallback(async(refEmail, refPassword) => {
     const email = refEmail.current.value;
     const password = refPassword.current.value;
 
     const { data: token } = await api.post("/login", { email, password });
-    console.log(token)
-   /* token
-      ? setCookie(null, "user", token, {
-          maxAge: 1800, // 30 minutes
-        })(this).window.location("/dashboard")
-      : alert("wrong credentials");
-    */};
+    if (token) {
+      setCookie(null, "user", token, {
+        maxAge: 1800, // 30 minutes
+      });
+      
+     <Navigate replace to="/dashboard" />
+     setCanRedirect(!canRedirect)
+    }
+  }, [canRedirect]);
 
   return (
     <>

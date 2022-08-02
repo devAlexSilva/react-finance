@@ -1,18 +1,15 @@
 import { Fragment, useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
 import { Dashboard } from "../pages/dashboard"
 import { AuthContext } from "../contexts/auth";
 
-const Private = ({ Item }) => {
-    const context = useContext(AuthContext)
-    const { isLogged } = context
-
-    return isLogged? <Item /> : <Login /> 
-}
 
 export const RoutesApp = () => {
+    const context = useContext(AuthContext)
+    const { user } = context
+
     return (
         <>
         <BrowserRouter>
@@ -20,7 +17,13 @@ export const RoutesApp = () => {
                 <Routes>
                     <Route  path="/" element={<Login />}/>
                     <Route  path="/register" element={<Register />}/>
-                    <Route path="/dashboard" element={<Private Item={Dashboard} />} />
+                    <Route path="/dashboard" element={
+                        user ? (
+                            <Dashboard />
+                            ) : (
+                                <Login />
+                        )
+                    } />
                     <Route  path="*" element={<Login />}/>
                 </Routes>
             </Fragment>
