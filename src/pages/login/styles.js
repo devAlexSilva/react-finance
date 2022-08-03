@@ -32,10 +32,7 @@ export const label_register = styled.label`
     font-size: 1.5rem;
     color: #686868;
 `
-export const label_error = styled.label`
-    font-size: 1.1rem;
-    color: red;
-`
+
 export const strong = styled.strong`
     cursor: pointer;
 

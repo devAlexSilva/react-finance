@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from "react";
-import { AuthContext } from "../../contexts/auth";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { setCookie } from "nookies";
 import { api } from "../../api/axios";
@@ -10,7 +9,6 @@ import { useNavigate, Link } from "react-router-dom";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -40,16 +38,14 @@ export const Login = () => {
           type="email"
           value={email}
           placeholder="Enter your email"
-          onChange={(e) => [setEmail(e.target.value), setError("")]}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           type="password"
           value={password}
           placeholder="Enter your Password"
-          onChange={(e) => [setPassword(e.target.value), setError("")]}
+          onChange={(e) => setPassword(e.target.value)}
         />
-
-        <S.label_error>{error}</S.label_error>
 
         <Button text="login" onClick={handleLogin} />
 
