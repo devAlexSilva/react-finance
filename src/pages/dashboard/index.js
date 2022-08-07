@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/auth";
 import { useNavigate } from 'react-router-dom'
 import { Header } from "../../components/header";
 import { Resume } from "../../components/resume";
+import { Form } from "../../components/form";
 
 export const Dashboard = () => {
     const { cancelToken } = useContext(AuthContext)
@@ -14,6 +15,7 @@ export const Dashboard = () => {
         <button onClick={() => [cancelToken(), navigate('/')]}>logout</button>
         <Header />
         <Resume />
+        <Form />
         </>
     )
 }
