@@ -12,21 +12,18 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const hasAccess = async (email, password) => {
-      let signed = false;
-      const { data: token } = await api.post("/login", { email, password });
-      if (token) {
-        setCookie(null, "user", token, {
+    try {
+      const { data } = await api.post("/login", { email, password });
+      if (data) {
+        setCookie(null, "user", data, {
           maxAge: 1800, // 30 minutes
         });
-        signed = true;
       }
-      return signed;
-    };
-
-    if (await hasAccess(email, password)) {
       navigate("/dashboard");
       window.location.reload();
+    } catch (err) {
+      alert("email ou senha incorretos");
+      console.log(err);
     }
   };
 
