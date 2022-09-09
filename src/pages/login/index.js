@@ -15,7 +15,7 @@ export const Login = () => {
     try {
       const { data } = await api.post("/login", { email, password });
       if (data) {
-        setCookie(null, "user", data, {
+        setCookie(null, "user", data.token, {
           maxAge: 1800, // 30 minutes
         });
       }

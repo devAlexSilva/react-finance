@@ -1,29 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./styles";
+import { api } from "../../api/axios";
+import { AuthContext } from "../../contexts/auth";
+
 
 export const Form = () => {
   const [desc, setDesc] = useState("");
+  const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [isExpense, setIsExpense] = useState("");
+  const context = useContext(AuthContext)
 
-  const handleSave = () => {
-    if (!desc || !amount) {
-      alert("a descrição e o valor precisam ser preenchidos");
+  const handleSave = async () => {
+    if (!desc || !amount || !name) {
+      alert("todos os campos precisam ser preenchidos");
       return;
     } else if (amount < 1) {
       alert("só é permitido valores maiores que zero");
       return;
     }
-  };
 
+    const data = {
+      name: name,
+      info: desc,
+      price: Number(amount),
+    };
+
+    const { Api } = context
+      
+    const result = await Api.post('/deposites', data)
+
+    console.log(result)
+    
+  };
   return (
     <S.container>
       <S.inputContent>
-        <S.label>Description</S.label>
+        <S.label>Nome</S.label>
+        <S.input value={name} onChange={(e) => setName(e.target.value)} />
+      </S.inputContent>
+      <S.inputContent>
+        <S.label>Descrição</S.label>
         <S.input value={desc} onChange={(e) => setDesc(e.target.value)} />
       </S.inputContent>
       <S.inputContent>
-        <S.label>value</S.label>
+        <S.label>Valor</S.label>
         <S.input
           value={amount}
           type="number"
