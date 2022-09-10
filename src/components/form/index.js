@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
-import { AuthContext } from "../../contexts/auth";
 
-export const Form = () => {
-  const [desc, setDesc] = useState("");
+export const Form = ({ addTransactions }) => {
   const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [isExpense, setIsExpense] = useState(false);
-  const [refreshData, setRefreshData] = useState(false);
-  const { Api } = useContext(AuthContext);
 
   const handleSave = async () => {
     if (!desc || !amount || !name) {
@@ -25,15 +22,11 @@ export const Form = () => {
       price: Number(amount),
     };
 
-    isExpense
-      ? await Api.post("/withdraws", dataForm)
-      : await Api.post("/deposites", dataForm);
-console.log(refreshData)
-setRefreshData(!refreshData);
-};
-
-console.log('OUT FUNC', refreshData)
-  useEffect(() => {}, [refreshData])
+    addTransactions(isExpense, dataForm);
+    setName("");
+    setDesc("");
+    setAmount("");
+  };
 
   return (
     <S.container>
