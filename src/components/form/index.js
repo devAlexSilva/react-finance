@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { api } from "../../api/axios";
 import { AuthContext } from "../../contexts/auth";
-
 
 export const Form = () => {
   const [desc, setDesc] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
-  const [isExpense, setIsExpense] = useState("");
-  const context = useContext(AuthContext)
+  const [isExpense, setIsExpense] = useState(false);
+  const [refreshData, setRefreshData] = useState(false);
+  const { Api } = useContext(AuthContext);
 
   const handleSave = async () => {
     if (!desc || !amount || !name) {
@@ -20,19 +19,22 @@ export const Form = () => {
       return;
     }
 
-    const data = {
+    const dataForm = {
       name: name,
       info: desc,
       price: Number(amount),
     };
 
-    const { Api } = context
-      
-    const result = await Api.post('/deposites', data)
+    isExpense
+      ? await Api.post("/withdraws", dataForm)
+      : await Api.post("/deposites", dataForm);
+console.log(refreshData)
+setRefreshData(!refreshData);
+};
 
-    console.log(result)
-    
-  };
+console.log('OUT FUNC', refreshData)
+  useEffect(() => {}, [refreshData])
+
   return (
     <S.container>
       <S.inputContent>
