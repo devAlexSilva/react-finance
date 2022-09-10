@@ -7,8 +7,8 @@ import { Button } from "../../components/button";
 import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("dev@dev.com");
+  const [password, setPassword] = useState("dev@dev");
   const navigate = useNavigate();
 
   const handleLogin = async () => {

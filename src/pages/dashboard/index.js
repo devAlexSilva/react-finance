@@ -11,20 +11,22 @@ export const Dashboard = () => {
   const navigate = useNavigate();
   const [totalDeposites, setTotalDeposites] = useState(0);
   const [totalWithdraws, setTotalWithdraws] = useState(0);
+  const [listDeposites, setListDeposites] = useState([]);
+  const [listWithdraws, setListWithdraws] = useState([]);
   const [accumulated, setAccumulated] = useState(0);
   const [refreshTransactions, setRefreshTransactions] = useState(false);
 
   const { Api } = useContext(AuthContext);
-
+  
   useEffect(() => {
     (async function total() {
-      const totalDeposites = await Api.get("/deposites");
-      const totalWithdraws = await Api.get("/withdraws");
-
-      const totalD = sumTotal(totalDeposites).toFixed(2);
+      setListDeposites(await Api.get("/deposites"));
+      setListWithdraws(await Api.get("/withdraws"));
+      
+      const totalD = sumTotal(listDeposites).toFixed(2);
       setTotalDeposites(totalD);
 
-      const totalW = sumTotal(totalWithdraws).toFixed(2);
+      const totalW = sumTotal(listWithdraws).toFixed(2);
       setTotalWithdraws(totalW);
 
       const totalA = totalD - totalW;
@@ -35,11 +37,11 @@ export const Dashboard = () => {
   function sumTotal(transactionList) {
     const total = [];
     
-    transactionList.data.forEach((transaction) =>
+    transactionList.data?.forEach((transaction) =>
       total.push(transaction.price)
     );
     
-    return total.reduce((value, total) => value + total);
+    return total.reduce((value, total) => value + total, 0);
   }
 
   async function addTransactions(isExpense = false, dataForm = {}) {
@@ -59,7 +61,7 @@ export const Dashboard = () => {
         withdraw={totalWithdraws}
         total={accumulated}
       />
-      <Form addTransactions={addTransactions} />
+      <Form addTransactions={addTransactions} listDeposites={listDeposites} listWithdraws={listWithdraws} />
     </>
   );
 };

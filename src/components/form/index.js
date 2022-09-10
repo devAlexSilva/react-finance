@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Grid } from "../grid";
 import * as S from "./styles";
 
-export const Form = ({ addTransactions }) => {
+export const Form = ({ addTransactions, listDeposites, listWithdraws }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
@@ -29,6 +30,7 @@ export const Form = ({ addTransactions }) => {
   };
 
   return (
+    <>
     <S.container>
       <S.inputContent>
         <S.label>Nome</S.label>
@@ -65,5 +67,7 @@ export const Form = ({ addTransactions }) => {
       </S.radioGroup>
       <S.button onClick={handleSave}>ADICIONAR</S.button>
     </S.container>
+      <Grid listDeposites={listDeposites} listWithdraws={listWithdraws}/>
+    </>
   );
 };
