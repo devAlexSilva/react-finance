@@ -17,30 +17,33 @@ export const Dashboard = () => {
   const [refreshTransactions, setRefreshTransactions] = useState(false);
 
   const { Api } = useContext(AuthContext);
-  
+
   useEffect(() => {
     (async function total() {
-      setListDeposites(await Api.get("/deposites"));
-      setListWithdraws(await Api.get("/withdraws"));
-      
-      const totalD = sumTotal(listDeposites).toFixed(2);
+      const deposites = await Api.get("/deposites");
+      const withdraws = await Api.get("/withdraws");
+
+      setListDeposites(deposites);
+      setListWithdraws(withdraws);
+
+      const totalD = sumTotal(deposites).toFixed(2);
       setTotalDeposites(totalD);
 
-      const totalW = sumTotal(listWithdraws).toFixed(2);
+      const totalW = sumTotal(withdraws).toFixed(2);
       setTotalWithdraws(totalW);
 
       const totalA = totalD - totalW;
       setAccumulated(totalA);
     })();
-  }, [Api, refreshTransactions]);
+  }, [refreshTransactions]);
 
   function sumTotal(transactionList) {
     const total = [];
-    
+
     transactionList.data?.forEach((transaction) =>
       total.push(transaction.price)
     );
-    
+
     return total.reduce((value, total) => value + total, 0);
   }
 
@@ -61,7 +64,11 @@ export const Dashboard = () => {
         withdraw={totalWithdraws}
         total={accumulated}
       />
-      <Form addTransactions={addTransactions} listDeposites={listDeposites} listWithdraws={listWithdraws} />
+      <Form
+        addTransactions={addTransactions}
+        listDeposites={listDeposites}
+        listWithdraws={listWithdraws}
+      />
     </>
   );
 };
