@@ -55,6 +55,16 @@ export const Dashboard = () => {
     setRefreshTransactions(!refreshTransactions);
   }
 
+  async function handleDelete(isExpense = false, transactionId = {}) {
+    console.log('dash', transactionId)
+    
+    isExpense
+      ? await Api.delete(`/withdraws/${transactionId}`)
+      : await Api.delete(`/deposites/${transactionId}`);
+
+    setRefreshTransactions(!refreshTransactions);
+  }
+
   return (
     <>
       <button onClick={() => [cancelToken(), navigate("/")]}>logout</button>
@@ -68,6 +78,7 @@ export const Dashboard = () => {
         addTransactions={addTransactions}
         listDeposites={listDeposites}
         listWithdraws={listWithdraws}
+        handleDelete={handleDelete}
       />
     </>
   );

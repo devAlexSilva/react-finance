@@ -2,7 +2,7 @@ import React from "react";
 import { GridItem } from "../grid_item";
 import * as S from "./styles";
 
-export const Grid = ({ listDeposites, listWithdraws }) => {
+export const Grid = ({ listDeposites, listWithdraws, handleDelete }) => {
   return (
     <S.table>
       <S.tHead>
@@ -18,7 +18,10 @@ export const Grid = ({ listDeposites, listWithdraws }) => {
       </S.tHead>
       <S.tBody>
         {listDeposites.data?.map((item, index) => {
-          return <GridItem key={index} item={item} />;
+          return <GridItem key={index} item={item} handleDelete={handleDelete} />;
+        })}
+        {listWithdraws.data?.map((item, index) => {
+          return <GridItem key={index} item={item} isExpense={true} handleDelete={handleDelete} />;
         })}
       </S.tBody>
     </S.table>
