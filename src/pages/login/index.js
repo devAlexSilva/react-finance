@@ -7,8 +7,8 @@ import { Button } from "../../components/button";
 import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
-  const [email, setEmail] = useState("dev@dev.com");
-  const [password, setPassword] = useState("dev@dev");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -23,7 +23,6 @@ export const Login = () => {
       window.location.reload();
     } catch (err) {
       alert("email ou senha incorretos");
-      console.log(err);
     }
   };
 
@@ -35,22 +34,22 @@ export const Login = () => {
         <Input
           type="email"
           value={email}
-          placeholder="Enter your email"
+          placeholder="Entre com seu email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           type="password"
           value={password}
-          placeholder="Enter your Password"
+          placeholder="Entre com sua Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <Button text="login" onClick={handleLogin} />
 
         <S.label_register>
-          Not have an account?
+          Ainda não tem uma conta?
           <S.strong>
-            <Link to="/register"> register</Link>
+            <Link to="/register"> Registrar</Link>
           </S.strong>
         </S.label_register>
       </S.content>

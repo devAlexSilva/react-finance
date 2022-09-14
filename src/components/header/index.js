@@ -10,13 +10,12 @@ export const Header = ({ text, onClick = () => {}, a, spanColor, backColor }) =>
         <span>APS Finance</span>
       </S.logo>
       <div>
-        {a ? (
-          <a href={a}>
-            <Button text={text} backColor={backColor} />
-          </a>
-        ) : (
-          <Button text={text} onClick={onClick} backColor={backColor}/>
-        )}
+        {a ? 
+        <a href={a}>
+          <Button text={text} backColor={backColor} />
+        </a>
+         : <Button text={text} onClick={onClick} backColor={backColor}/>
+        }
       </div>
     </S.header>
   );

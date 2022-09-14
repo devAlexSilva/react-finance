@@ -8,7 +8,6 @@ import {
 
 export const GridItem = ({
   item,
-  onDelete,
   isExpense = false,
   handleDelete,
 }) => {
