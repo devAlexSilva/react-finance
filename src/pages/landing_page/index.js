@@ -11,7 +11,7 @@ export const LandingPage = () => {
         </S.logo>
         <div>
           <a href="/login">
-            <Button text="Login" backColor={"#1e255e"}/>
+            <Button text="Login" backColor={"#1e255e"} />
           </a>
         </div>
       </S.header>
@@ -24,13 +24,15 @@ export const LandingPage = () => {
               de forma prática e gratuita
             </p>
             <div>
-            <a href="/login">
-            <Button text="Começar" />
-          </a>
+              <a href="/login">
+                <Button text="Começar" />
+              </a>
             </div>
           </div>
         </S.sectionLeft>
-        <S.sectionRight></S.sectionRight>
+        <S.sectionRight>
+          <div className="content-image" />
+        </S.sectionRight>
       </S.main>
     </S.container>
   );
