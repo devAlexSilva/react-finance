@@ -29,8 +29,9 @@ export const Login = () => {
 
   return (
     <S.container>
-      <S.label>APS Finance - Login</S.label>
+      <S.background />
       <S.content>
+        <S.label>APS Finance - Login</S.label>
         <Input
           type="email"
           value={email}

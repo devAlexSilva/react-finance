@@ -50,8 +50,9 @@ export const Register = () => {
 
   return (
     <S.container>
-      <S.label>APS Finance - Register</S.label>
+      <S.background />
       <S.content>
+      <S.label>APS Finance - Register</S.label>
         <Input
           type="email"
           value={email}
