@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const container = styled.div`
     max-width: 112rem;
-    width: 98%;
-    margin: 0 auto;
+    width: 95%;
     display: flex;
-    gap: 4rem;
+    margin: 0 auto;
     justify-content: space-around;
     
 `

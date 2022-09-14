@@ -6,7 +6,7 @@ export const button = styled.button`
   background-color: transparent;
   border: 0.3rem solid #1e255e;
   border-radius: 1.8rem;
-  color: var(--color);
+  color: #fff;
   cursor: pointer;
   font-family: "Segoe UI", Helvetica;
   font-weight: 600;

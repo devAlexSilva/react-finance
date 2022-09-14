@@ -8,13 +8,21 @@ export const container = styled.div`
     box-shadow: 0 0 .5rem #ccc;
     border-radius: .5rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     padding: 1.5rem 0;
     gap: 1rem;
+`
 
-    @media (max-width: 750px) {
-        display: grid;
-    }
+export const area_01 = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+`
+export const area_02 = styled.div`
+    display: flex;
+    gap: 1.5rem;
 `
 
 export const inputContent = styled.div`
@@ -36,11 +44,16 @@ export const input = styled.input`
 
 export const radioGroup = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
     
     input {
         margin-left: .5rem;
         accent-color: black;
+    }
+
+    > label:nth-child(1) {
+        margin-left: 0;
     }
 `
 
