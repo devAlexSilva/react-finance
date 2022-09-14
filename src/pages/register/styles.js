@@ -47,6 +47,11 @@ export const label_register = styled.label`
   color: #fff;
 `;
 
+export const label_error = styled.label`
+  font-size: 1.8rem;
+  color: orange;
+`
+
 export const strong = styled.strong`
   cursor: pointer;
 

@@ -4,38 +4,7 @@ export const container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-export const header = styled.nav`
-  width: 80%;
-  height: 4rem;
-  margin-top: 3rem;
-  display: flex;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  justify-content: space-between;
-  background-color: inherit;
-  z-index: 1;
 
-  @media (max-width: 768px) {
-    width: 95%;
-    height: 2rem;
-    margin-top: 2rem;
-  }
-`;
-export const logo = styled.div`
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 3rem;
-    height: 3rem;
-  }
-  span {
-    margin-left: 0.8rem;
-    color: #1e255e;
-    font-weight: 600;
-  }
-`;
 export const main = styled.main`
   display: flex;
   width: 100%;
@@ -95,7 +64,7 @@ export const sectionLeft = styled.section`
 export const sectionRight = styled.section`
   width: 50%;
   height: 100%;
-  background-color: #0061fe;
+  background-color: rgba(30, 37, 94, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -13,22 +13,19 @@ export const Register = () => {
 
   function validate(email, password) {
     let log = "ok";
-    console.log(email)
     if (email.trim() === "") {
-      log = "email cannot be blank";
+      log = "Email inválido";
     }
     if (password.trim().length < 6) {
-      log = "password cannot be less than six";
+      log = "a senha deve conter ao menos 6 dígitos";
     }
     return log;
   }
 
   async function register (email, password) {
     try {
-      console.log(email, password)
-      const { data } = await api.post("/users", {email, password });
-      console.log(data);
-      alert('created user');
+      await api.post("/users", {email, password });
+      alert('Usuário criado com sucesso');
       
       navigate("/");
       window.location.reload();
@@ -56,20 +53,20 @@ export const Register = () => {
         <Input
           type="email"
           value={email}
-          placeholder="Enter your email"
+          placeholder="Digite seu email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           type="password"
           value={password}
-          placeholder="Enter your Password"
+          placeholder="Escolha uma Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <Button text="register" onClick={handleRegister} />
-        {error ? <S.label_register>{error}</S.label_register> : null}
+        {error ? <S.label_error>{error}</S.label_error> : null}
         <S.label_register>
-          Already have an account?
+          Já possui uma conta?
           <S.strong>
             <Link to="/login"> Login</Link>
           </S.strong>

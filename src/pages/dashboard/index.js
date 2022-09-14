@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-//import * as S from "./styles";
+import * as S from "./styles";
 import { AuthContext } from "../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/header";
@@ -56,8 +56,8 @@ export const Dashboard = () => {
   }
 
   async function handleDelete(isExpense = false, transactionId = {}) {
-    console.log('dash', transactionId)
-    
+    console.log("dash", transactionId);
+
     isExpense
       ? await Api.delete(`/withdraws/${transactionId}`)
       : await Api.delete(`/deposites/${transactionId}`);
@@ -67,19 +67,24 @@ export const Dashboard = () => {
 
   return (
     <>
-      <button onClick={() => [cancelToken(), navigate("/")]}>logout</button>
-      <Header />
-      <Resume
-        deposite={totalDeposites}
-        withdraw={totalWithdraws}
-        total={accumulated}
+      <Header
+        text="SAIR"
+        onClick={() => [cancelToken(), navigate("/")]}
+        spanColor="#fff"
       />
-      <Form
-        addTransactions={addTransactions}
-        listDeposites={listDeposites}
-        listWithdraws={listWithdraws}
-        handleDelete={handleDelete}
-      />
+      <S.container>
+        <Resume
+          deposite={totalDeposites}
+          withdraw={totalWithdraws}
+          total={accumulated}
+        />
+        <Form
+          addTransactions={addTransactions}
+          listDeposites={listDeposites}
+          listWithdraws={listWithdraws}
+          handleDelete={handleDelete}
+        />
+      </S.container>
     </>
   );
 };

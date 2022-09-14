@@ -9,7 +9,7 @@ export const Grid = ({ listDeposites, listWithdraws, handleDelete }) => {
         <S.tR>
           <S.tH width={40}>Nome</S.tH>
           <S.tH width={40}>Descrição</S.tH>
-          <S.tH width={40}>Valor</S.tH>
+          <S.tH width={40} alignCenter>Valor</S.tH>
           <S.tH width={10} alignCenter>
             Tipo
           </S.tH>

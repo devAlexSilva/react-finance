@@ -1,20 +1,12 @@
 import React from "react";
 import * as S from "./styles";
 import { Button } from "../../components/button/index";
+import { Header } from "../../components/header";
 export const LandingPage = () => {
   return (
+    <>
+  <Header a={"/login"} text="Login"/>
     <S.container>
-      <S.header>
-        <S.logo>
-          <img src="favicon.ico" alt="logo de uma calculadora" />
-          <span>APS Finance</span>
-        </S.logo>
-        <div>
-          <a href="/login">
-            <Button text="Login" backColor={"#1e255e"} />
-          </a>
-        </div>
-      </S.header>
       <S.main>
         <S.sectionLeft>
           <div className="content">
@@ -24,8 +16,8 @@ export const LandingPage = () => {
               de forma prática e gratuita
             </p>
             <div>
-              <a href="/login">
-                <Button text="Começar" />
+              <a href="/register">
+                <Button text="Registre-se" />
               </a>
             </div>
           </div>
@@ -35,5 +27,6 @@ export const LandingPage = () => {
         </S.sectionRight>
       </S.main>
     </S.container>
+    </>
   );
 };

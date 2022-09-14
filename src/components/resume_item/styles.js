@@ -7,6 +7,7 @@ export const container = styled.div`
     background-color: #fff;
     border-radius: .5rem;
     padding: .5rem 1.5rem;
+    margin-top: 10rem;
     width: 30%;
 
     @media (max-width: 750px){

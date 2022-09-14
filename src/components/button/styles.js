@@ -7,7 +7,6 @@ export const button = styled.button`
   border-radius: 0.5rem;
   width: 100%;
   cursor: pointer;
-  background-color: #046ee5;
   background-color: ${(props) => (props.backColor ? `${props.backColor}` : "#046ee5")};
   color: white;
   font-weight: 600;
