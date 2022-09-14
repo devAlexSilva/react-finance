@@ -20,13 +20,15 @@ export const header = styled.nav`
 export const logo = styled.div`
   display: flex;
   align-items: center;
-  
+
   img {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
   }
   span {
-    margin-left: .8rem;
+    margin-left: 0.8rem;
+    color: #1e255e;
+    font-weight: 600;
   }
 `;
 export const main = styled.main`
@@ -37,10 +39,26 @@ export const main = styled.main`
 export const sectionLeft = styled.section`
   width: 50%;
   height: 100%;
-  background-color: lightgray;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    width: 80%;
+    h1 {
+      color: #1e255e;
+      font-size: 6rem;
+    }
+    p {
+      margin: 2rem 0;
+      color: rgba(30, 37, 94, 0.7);
+      font-size: 1.6rem;
+    }
+  }
 `;
 export const sectionRight = styled.section`
   width: 50%;
   height: 100%;
-  background-color: lightblue;
+  background-color: #0061fe;
 `;
