@@ -3,6 +3,8 @@ import { parseCookies, destroyCookie } from "nookies";
 import axios from "axios";
 
 export const AuthContext = createContext({});
+const build_url = "https://apsfinance.herokuapp.com"
+const dev_url = "http://localhost:2727"
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -15,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const cancelToken = () => destroyCookie(null, "user");
 
   const Api = axios.create({
-    baseURL: "http://localhost:2727",
+    baseURL: build_url,
     headers: {
       Authorization: `Bearer ${user}`,
     },
