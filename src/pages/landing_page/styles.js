@@ -72,7 +72,7 @@ export const sectionRight = styled.section`
   .content-image {
     height: 70%;
     width: 100%;
-    margin-top: 5rem;
+    margin: 4rem 0;
     background-image: url("finance.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -80,18 +80,18 @@ export const sectionRight = styled.section`
 
   @media (max-width: 768px) {
     width: 100%;
-
+    
     .content-image {
       height: 100%;
       margin: 0;
-      background-position: 0 -10rem;
+      background-position: 0 -8rem;
       background-size: cover;
     }
   }
 
   @media (max-width: 450px) {
     .content-image {
-        background-position: 0;
+        background-position: 0 -4rem;
     }
   }
 `;

@@ -5,7 +5,7 @@ import { Header } from "../../components/header";
 export const LandingPage = () => {
   return (
     <>
-  <Header a={"/login"} text="Login"/>
+  <Header a={"/login"} text="Login" spanColor="#1a1a1a"/>
     <S.container>
       <S.main>
         <S.sectionLeft>

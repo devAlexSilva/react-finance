@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../button";
+import { ButtonHeader } from "../button_header";
 import * as S from "./styles";
 
 export const Header = ({ text, onClick = () => {}, a, spanColor, backColor }) => {
@@ -12,9 +12,9 @@ export const Header = ({ text, onClick = () => {}, a, spanColor, backColor }) =>
       <div>
         {a ? 
         <a href={a}>
-          <Button text={text} backColor={backColor} />
+          <ButtonHeader text={text} backColor={backColor} spanColor={spanColor} />
         </a>
-         : <Button text={text} onClick={onClick} backColor={backColor}/>
+         : <ButtonHeader text={text} onClick={onClick} backColor={backColor}/>
         }
       </div>
     </S.header>
