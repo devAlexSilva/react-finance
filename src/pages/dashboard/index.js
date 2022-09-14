@@ -35,7 +35,7 @@ export const Dashboard = () => {
       const totalA = totalD - totalW;
       setAccumulated(totalA);
     })();
-  }, [refreshTransactions]);
+  }, [Api, refreshTransactions]);
 
   function sumTotal(transactionList) {
     const total = [];

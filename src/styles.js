@@ -14,6 +14,7 @@ export const global = createGlobalStyle`
     body {
         height: 100vh;
         width: 100vw;
+        font-size: 1.8rem;
         background-color: #f0f2f5;
         font-family: Arial, Helvetica, sans-serif;
     }
